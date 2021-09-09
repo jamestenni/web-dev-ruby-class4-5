@@ -1,0 +1,11 @@
+<!-- IN-CLASS EXERCISE -->
+<h1>Destroy Page</h1>
+
+<h3>User information deleted:</h3>
+<p>id: <%= @u.id %><p>
+<p>name: <%= @u.name %><p>
+<p>email: <%= @u.email %><p>
+<p>birthday: <%= @u.birthday %> </p>
+
+<%= link_to 'Back to index', users_path %>
+<%= link_to 'Re-Crerate', create_fast_path(name: @u.name, email: @u.email, birthday: @u.birthday) %>
