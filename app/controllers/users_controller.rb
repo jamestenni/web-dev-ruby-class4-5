@@ -63,6 +63,9 @@ class UsersController < ApplicationController
     @user = User.new()
     @user.name = params[:name]
     @user.email = params[:email]
+    @user.birthday = params[:birthday]
+    @user.address = params[:address]
+    @user.postal_code = params[:postal_code]
 
     respond_to do |format|
       if @user.save
