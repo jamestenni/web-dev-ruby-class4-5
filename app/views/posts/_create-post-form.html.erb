@@ -1,0 +1,14 @@
+<%= form_with url:"/user_create_post"  do |form| %>
+
+	<%= form.hidden_field :id, value: @user.id %>
+
+	<%= form.label :msg, "Post Message:" %>
+	<%= form.text_area :msg %>
+
+	<br><br>
+
+	<%= form.submit "Post" %>
+<% end %>
+
+<br>
+<a href="/user_main?id=<%= @user.id %>"><button>Cancel</button></a>

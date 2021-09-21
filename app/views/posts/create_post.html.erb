@@ -1,0 +1,45 @@
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: 'Arial'
+	}
+
+	label {
+		margin-top: 40px;
+		font-size: 1.4rem;
+	}
+
+	textarea {
+		width: 500px;
+		height: 200px;
+		font-size: 20px;
+		margin-top: 20px;
+		padding: 5px;
+		background-color: #C5F1FF;
+	}
+
+	input[type="submit"] {
+		width: 100px;
+		height: 30px;
+		font-size: 1.2rem;
+		font-weight: bold;
+		background-color: #7ABACC;
+		border: none;
+		border-radius: 10px;
+	}
+
+	input[type="submit"]:hover {
+		background-color: #91DDF2;
+		color: black;
+	}
+
+
+</style>
+
+
+<h1> <%= @user.name %> is creating a post...</h1>
+
+<%= render 'create-post-form' %>

@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Id:</strong>
+  <%= @user.id %>
+</p>
+
+<p>
   <strong>Email:</strong>
   <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.pass %>
 </p>
 
 <p>
@@ -24,6 +34,27 @@
   <strong>Postal Code:</strong>
   <%= @user.postal_code %>
 </p>
+
+<p>
+  <strong>Posts:</strong>
+</p>
+
+<% if @user.posts.any? %>
+ <table>
+  	<tr>
+  		<th>Message</th>
+  		<th>Post Date</th>
+  	</tr>
+
+  	<% @user.posts.each do |post| %>
+  	<tr>
+  		<td><%= post.msg %></td>
+  		<td><%= post.created_at %></td>
+  	</tr>
+  	<% end %>
+  </table>
+<% end %>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

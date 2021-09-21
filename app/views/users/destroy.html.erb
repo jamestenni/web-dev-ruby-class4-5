@@ -2,12 +2,13 @@
 <h1>Destroy Page</h1>
 
 <h3>User information deleted:</h3>
-<p>id: <%= @u.id %><p>
-<p>name: <%= @u.name %><p>
-<p>email: <%= @u.email %><p>
+<p>id: <%= @u.id %></p>
+<p>name: <%= @u.name %></p>
+<p>email: <%= @u.email %></p>
+<p>password: <%= @u.pass %></p>
 <p>birthday: <%= @u.birthday %> </p>
 <p>address: <%= @u.address %> </p>
 <p>postal code: <%= @u.postal_code %> </p>
 
 <%= link_to 'Back to index', users_path %>
-<%= link_to 'Re-Crerate', create_fast_path(name: @u.name, email: @u.email, birthday: @u.birthday, address: @u.address, postal_code: @u.postal_code) %>
+<%= link_to 'Re-Crerate', create_fast_path(name: @u.name, email: @u.email, pass: @u.pass, birthday: @u.birthday, address: @u.address, postal_code: @u.postal_code) %>

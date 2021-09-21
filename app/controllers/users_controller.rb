@@ -63,6 +63,7 @@ class UsersController < ApplicationController
     @user = User.new()
     @user.name = params[:name]
     @user.email = params[:email]
+    @user.pass = params[:pass]
     @user.birthday = params[:birthday]
     @user.address = params[:address]
     @user.postal_code = params[:postal_code]
@@ -73,8 +74,26 @@ class UsersController < ApplicationController
         format.json { render :show, status: :created, location: @user }
       end
     end
-
   end
+
+
+  def login
+    #input: email and pass
+    @user = User.find_by(email: params[:email], pass: params[:pass])
+    @isExist = @user != nil
+
+    puts "EMAIL = #{params[:email]}"
+    puts "PASSWORD = #{params[:pass]}"
+    puts "IS THIS USER EXIST? = #{@isExist}"
+
+    if (!@isExist)
+      redirect_to main_url(login_failed: true)
+    else
+      redirect_to user_main_url(id: @user.id)
+    end
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -84,6 +103,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :name, :birthday, :address, :postal_code)
+      params.require(:user).permit(:email, :pass, :name, :birthday, :address, :postal_code)
     end
 end

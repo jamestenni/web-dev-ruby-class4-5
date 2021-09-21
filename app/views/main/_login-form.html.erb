@@ -1,0 +1,12 @@
+<%= form_with url:"/login"  do |login_form| %>
+
+	<%= login_form.label :email, "Email:" %>
+	<%= login_form.text_field :email %>
+
+	<%= login_form.label :pass, "Password:" %>
+	<%= login_form.text_field :pass %>
+
+	<br><br>
+
+	<%= login_form.submit "Login" %>
+<% end %>

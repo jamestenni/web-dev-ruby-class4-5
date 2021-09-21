@@ -19,6 +19,24 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def edit2
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
+  end
+
+  def edit2_s
+    @post = Post.find(params[:post_id])
+    @post.msg = params[:msg]
+
+    respond_to do |format|
+    if @post.save 
+        format.html { redirect_to user_main_path(id: params[:user_id]), notice: "Post was successfully edited." }
+    else
+        format.html { redirect_to edit_post2_path(user_id: params[:user_id], post_id: params[:post_id]), notice: "LOL" }
+      end
+    end
+  end
+
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
@@ -30,6 +48,24 @@ class PostsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_post
+    @user = User.find(params[:id])
+  end
+
+  def create_post_s
+    @post = Post.new()
+    @post.user_id = params[:id]
+    @post.msg = params[:msg]
+
+    respond_to do |format|
+    if @post.save 
+        format.html { redirect_to user_main_path(id: params[:id]), notice: "Post was successfully created." }
+    else
+        format.html { redirect_to create_post_path(id: params[:id]), notice: "LOL" }
       end
     end
   end
@@ -53,6 +89,14 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def destroy2
+    @post = Post.find(params[:post_id])
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to user_main_path(id: params[:user_id]), notice: "Post was successfully destroyed." }
     end
   end
 

@@ -1,0 +1,86 @@
+:css
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: 'Arial'
+	}
+
+	table, tr, th , td {
+		border: 1px solid black;
+	}
+
+	table {
+		border-collapse: collapse;
+	}
+
+	table tr:first-child {
+		font-size: 20px;
+		height: 40px;
+	}
+
+	table tr {
+		text-align: center
+	}
+
+	table tr td {
+		padding: 5px 15px 5px 15px;
+	}
+
+	table tr td:first-child {
+		text-align: left
+	}
+
+	table tr th:first-child {
+		width: 500px;
+	}
+
+	table tr:nth-child(odd) {
+		background-color: #E6FFFF;
+	}
+
+	table tr:nth-child(even) {
+		background-color: #99DDFF;
+	}
+
+	table tr:first-child {
+		background-color: #8BD3E6;
+	}
+
+	p {
+		font-size: 1rem;
+	}
+
+%h1 USER'S ID #{@user.id}
+
+%p Name: #{@user.name}
+%p Email: #{@user.email}
+%p Bitrthday: #{@user.birthday.to_s}
+%p Address: #{@user.address}
+%p Postal Code: #{@user.postal_code}
+
+- if @user.posts.any?
+	%table
+		%tr
+			%th Message
+			%th Date Modified
+			%th Date Created
+			%th{:colspan => 2}
+		- @user.posts.reverse().each do |post|
+			%tr
+				%td #{post.msg}
+				%td #{post.updated_at}
+				%td #{post.created_at}
+				%td #{link_to 'Edit', edit_post2_path(post_id: post, user_id: @user.id)}
+				%td #{link_to 'Delete', delete_post2_path(post_id: post, user_id: @user.id), method: :delete, data: { confirm: 'Are you sure?' }}
+- else
+	%h3{:style => "color:red"} NO POST AVAILABLE
+
+%br
+%a{:href => "/create_post?id=#{@user.id}"} 
+	%button Create Post
+%br
+%br
+%a{:href => "/main"}
+	%button Log out
