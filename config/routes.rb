@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'create_fast', to: 'users#create_fast'
 
   get 'main', to: 'main#login' 
+  post 'main', to: 'main#login_check'
+
   get 'user_main', to: 'main#user_main'
 
   get 'create_post', to: 'posts#create_post'
@@ -13,6 +15,6 @@ Rails.application.routes.draw do
   post 'user_edit_post', to: 'posts#edit2_s'
   delete 'delete_post2', to: 'posts#destroy2'
 
-  post 'login', to: 'users#login'
+
   post 'user_create_post', to: 'posts#create_post_s'
 end

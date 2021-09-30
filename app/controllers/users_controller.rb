@@ -76,25 +76,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-  def login
-    #input: email and pass
-    @user = User.find_by(email: params[:email], pass: params[:pass])
-    @isExist = @user != nil
-
-    puts "EMAIL = #{params[:email]}"
-    puts "PASSWORD = #{params[:pass]}"
-    puts "IS THIS USER EXIST? = #{@isExist}"
-
-    if (!@isExist)
-      redirect_to main_url(login_failed: true)
-    else
-      redirect_to user_main_url(id: @user.id)
-    end
-  end
-
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
