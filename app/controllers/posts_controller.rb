@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     if @post.save 
         format.html { redirect_to user_main_path(id: params[:user_id]), notice: "Post was successfully edited." }
     else
-        format.html { redirect_to edit_post2_path(user_id: params[:user_id], post_id: params[:post_id]), notice: "LOL" }
+        format.html { redirect_to user_edit_post_path(user_id: params[:user_id], post_id: params[:post_id]), notice: "LOL" }
       end
     end
   end
@@ -63,9 +63,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
     if @post.save 
-        format.html { redirect_to user_main_path(id: params[:id]), notice: "Post was successfully created." }
+        format.html { redirect_to "/user_main/#{@post.user_id}", notice: "Post was successfully created." }
     else
-        format.html { redirect_to create_post_path(id: params[:id]), notice: "LOL" }
+        format.html { redirect_to "/user_main/#{@post.user_id}/create_post", alert: "LOL" }
       end
     end
   end

@@ -41,7 +41,7 @@
 
 <h1> <%= @user.name %> is editing a post (post id = <%= @post.id %>)</h1>
 
-<%= form_with url:"/user_edit_post"  do |form| %>
+<%= form_with url:  user_edit_post_s_path(post_id: @post.id, user_id: @user.id)  do |form| %>
 
 	<%= form.hidden_field :user_id, value: @user.id %>
 	<%= form.hidden_field :post_id, value: @post.id %>
@@ -54,5 +54,5 @@
 
 	<%= form.submit "Edit" %>
 
-	<a href="/user_main?id=<%= @user.id %>"><button>Cancel</button></a>
+	<a href="<= user_main_path(id: @user.id) =>"><button>Cancel</button></a>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_with url:"/user_create_post"  do |form| %>
+<%= form_with url:"/user_main/#{@user.id}/create_post"  do |form| %>
 
 	<%= form.hidden_field :id, value: @user.id %>
 
@@ -11,4 +11,4 @@
 <% end %>
 
 <br>
-<a href="/user_main?id=<%= @user.id %>"><button>Cancel</button></a>
+<a href="/user_main/<%= @user.id %>"><button>Cancel</button></a>

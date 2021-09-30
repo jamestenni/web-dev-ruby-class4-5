@@ -72,13 +72,13 @@
 				%td #{post.msg}
 				%td #{post.updated_at}
 				%td #{post.created_at}
-				%td #{link_to 'Edit', edit_post2_path(post_id: post, user_id: @user.id)}
-				%td #{link_to 'Delete', delete_post2_path(post_id: post, user_id: @user.id), method: :delete, data: { confirm: 'Are you sure?' }}
+				%td #{link_to 'Edit', user_edit_post_path(post_id: post, user_id: @user.id)}
+				%td #{link_to 'Delete', user_delete_post_path(post_id: post, user_id: @user.id), method: :delete, data: { confirm: 'Are you sure?' }}
 - else
 	%h3{:style => "color:red"} NO POST AVAILABLE
 
 %br
-%a{:href => "/create_post?id=#{@user.id}"} 
+%a{:href => "/user_main/#{@user.id}/create_post"} 
 	%button Create Post
 %br
 %br
