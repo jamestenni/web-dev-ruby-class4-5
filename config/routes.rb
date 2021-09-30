@@ -8,13 +8,14 @@ Rails.application.routes.draw do
   get 'main', to: 'main#login' 
   post 'main', to: 'main#login_check'
 
-  get 'user_main/:id', to: 'main#user_main', as: 'user_main'
-  get 'user_main/:id/create_post', to: 'posts#create_post'
-  post 'user_main/:id/create_post', to: 'posts#create_post_s'
+  get 'users_main/:id', to: 'main#user_main', as: 'user_main'
 
-  get 'user_main/:user_id/edit_post/:post_id', to: 'posts#edit2', as: 'user_edit_post'
-  post 'user_main/:user_id/edit_post/:post_id', to: 'posts#edit2_s', as: 'user_edit_post_s'
+  get 'users_main/:id/posts/new', to: 'posts#create_post', as: 'user_create_post'
+  post 'users_main/:id/posts/new', to: 'posts#create_post_s', as: 'user_create_post_s'
 
-  delete 'user_main/:user_id/delete_post/:post_id', to: 'posts#destroy2', as: 'user_delete_post'
+  get 'users_main/:user_id/posts/:post_id', to: 'posts#edit2', as: 'user_edit_post'
+  post 'users_main/:user_id/posts/:post_id', to: 'posts#edit2_s', as: 'user_edit_post_s'
+
+  delete 'users_main/:user_id/posts/delete/:post_id', to: 'posts#destroy2', as: 'user_delete_post'
 
 end

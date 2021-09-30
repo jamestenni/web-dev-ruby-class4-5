@@ -16,7 +16,7 @@ class MainController < ApplicationController
     if (!@isExist)
       render 'login_failed'
     else
-      redirect_to "/user_main/#{@user.id}"
+      redirect_to user_main_path(id: @user.id)
     end
   end
 
