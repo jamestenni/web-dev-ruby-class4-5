@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :logged_in, except: %i[ new ]
+  before_action :logged_in2, only: %i[ edit update destroy ]
 
   # GET /users or /users.json
   def index
@@ -84,6 +86,22 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :pass, :name, :birthday, :address, :postal_code)
+      params.require(:user).permit(:email, :password, :name, :birthday, :address, :postal_code)
+    end
+
+    def logged_in
+      if (session[:user_id])
+        return true
+      else
+        redirect_to main_path, notice: "Please Login!"
+      end
+    end
+
+    def logged_in2
+      if (session[:user_id] == @user.id)
+        return true
+      else
+        redirect_to main_path, notice: "Please Login!"
+      end
     end
 end
