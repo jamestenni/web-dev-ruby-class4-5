@@ -122,6 +122,7 @@ class PostsController < ApplicationController
     end
 
     def logged_in2
+      @user = User.find(@post.user_id)
       if (session[:user_id] == @user.id)
         return true
       else
